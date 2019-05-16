@@ -2,7 +2,7 @@ const controller = require('./controller')
 
 
 module.exports = function(app) {
-  app.get('/', controller.index)
+  app.get('/task', controller.index)
   app.get('/task/:id', controller.display)
   app.post('/task/create', controller.create)
   app.put('/task/:id', controller.update)
