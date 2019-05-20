@@ -6,7 +6,7 @@ module.exports = {
   index: async function(req, res) {
 
     const task = await Task.find({})
-      .catch(err => { console.error(err); });
+      .catch(err => { console.error(err) });
     res.json(task);
 
     // Task.find({})
@@ -18,15 +18,21 @@ module.exports = {
     // })
   },
 
-  display: function(req, res) {
-    Task.find({_id: req.params.id})
-    .then(task => {
-      res.json({Data: task})
-    })
-    .catch(err => {
-      console.log('error --> ', err);
-      res.json();
-    })
+  display: async function(req, res) {
+    console.log("controller ->", req.params.id);
+    const task = await Task.find({_id: req.params.id})
+      .catch(err => { console.error(err) });
+      console.log(task);
+    res.json(task);
+
+    // Task.find({_id: req.params.id})
+    // .then(task => {
+    //   res.json({Data: task})
+    // })
+    // .catch(err => {
+    //   console.log('error --> ', err);
+    //   res.json();
+    // })
   },
 
   create: function(req, res) {

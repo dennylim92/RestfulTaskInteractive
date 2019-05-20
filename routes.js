@@ -2,12 +2,11 @@ const controller = require('./controller')
 
 
 module.exports = function(app) {
-  console.log('hit routes');
+  console.log("hit route");
   app.get('/tasks', controller.index)
   app.get('/task/:id', controller.display)
   app.post('/task/create', controller.create)
   app.put('/task/:id', controller.update)
   app.delete('/task/:id', controller.delete)
-  
 
 }
