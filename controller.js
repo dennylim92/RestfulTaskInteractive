@@ -3,15 +3,19 @@ const Task = require('./models')
 
 module.exports = {
 
-  index: function(req, res) {
-    Task.find({})
-    .then(task => {
-      res.json({Data: task})
-    })
-    .catch(err => {
-      console.log('error --> ', err);
-      res.redirect('/');
-    })
+  index: async function(req, res) {
+
+    const task = await Task.find({})
+      .catch(err => { console.error(err); });
+    res.json(task);
+
+    // Task.find({})
+    // .then(task => {
+    //   res.json(task)
+    // })
+    // .catch(err => {
+    //   console.error('error --> ', err);
+    // })
   },
 
   display: function(req, res) {
@@ -21,40 +25,40 @@ module.exports = {
     })
     .catch(err => {
       console.log('error --> ', err);
-      res.redirect('/');
+      res.json();
     })
   },
 
   create: function(req, res) {
     Task.create(req.body)
     .then(task => {
-      res.redirect('/');
+      res.json({Data: task});
     })
     .catch(err => {
       console.log('error --> ', err);
-      res.redirect('/');
+      res.json();
     })
   },
 
   update: function(req, res) {
     Task.findByIdAndUpdate({_id: req.params.id}, req.body)
     .then(task => {
-      res.redirect('/');
+      res.json({Data: task});
     })
     .catch(err => {
       console.log('error --> ', err);
-      res.redirect('/');
+      res.json();
     })
   },
 
   delete: function(req, res) {
     Task.findByIdAndDelete({_id: req.params.id})
     .then(task => {
-      res.redirect('/');
+      res.json({Data: task});
     })
     .catch(err => {
       console.log('error --> ', err);
-      res.redirect('/');
+      res.json();
     })
   }
 
