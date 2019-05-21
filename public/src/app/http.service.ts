@@ -14,8 +14,21 @@ export class HttpService {
     return this._http.get('/tasks');
   }
 
-  getTask(id) {
-    console.log("service ->", id);
-    return this._http.get('/task/'+id);
+  showEdit(id) {
+    console.log('hit service');
+    return this._http.get('/task/' + id);
+  }
+
+  addTask(newtask) {
+    return this._http.post('/task/create', newtask);
+  }
+
+  editTask(id, editTask) {
+    return this._http.put('/task/' + id, editTask);
+  }
+
+  removeTask(id) {
+    return this._http.delete('/task/' + id);
   }
 }
+

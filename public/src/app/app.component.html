@@ -1,19 +1,44 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-  <h1>
-    {{ mainTitle }}
-  </h1>
+<h2>New Task</h2>
+<!-- NEW TASK -->
+<form (submit)="createTask()">
+  Title <input type="text" name="newTask.title" [(ngModel)]="newTask.title">
+  <br>
+  <br>
+  Description <input type="text" name="newTask.description" [(ngModel)]="newTask.description">
+  <input type="submit" value="Create">
+</form>
+<!-- SHOW ALL TASK -->
+<h2>Task List</h2>
+<br>
+<div *ngFor="let task of tasks" style="border: 2px solid black; padding: 5px; width: 150px;">
+  <h3>{{task.title}}</h3>
+  <p>{{task.description}}</p>
+  <!-- SHOW EDIT -->
+  <form (submit)="showEdit(task._id)">
+    <input type="submit" value="Edit">
+  </form>
+  <!-- DELETE -->
+  <form (submit)="deleteTask(task._id)">
+    <input type="submit" value="Delete">
+  </form>
+  <br>
+  <br>
+</div>
+<!-- EDIT BOX -->
+<div *ngIf="editSingleTask">
+  <h3>Edit a Task</h3>
+  <form (submit)="updateTask(singleTask._id)">
+    Title <input type="text" name="editTask.title" [(ngModel)]="editTask.title">
+    <br>
+    <br>
+    Description <input type="text" name="editTask.description" [(ngModel)]="editTask.description">
+    <br>
+    <input type="submit" value="EDIT">
+  </form>
+</div>
 
-  <button (click)="getTaskFromService()">{{ getAllTasks }}</button>
-  <ul *ngIf="gotTasks">
-    <li *ngFor="let task of tasks">{{ task.title }}
-      <button (click)="getSingleTask(task._id)">{{ showButton }}</button>
-    </li>
-  </ul>
-  <ul *ngIf="gotSingleTask">
-    <li>{{ singleTask.title }}</li>
-    <li>{{ singleTask.description }}</li>
-  </ul>
 
 
 

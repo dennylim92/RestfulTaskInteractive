@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/RestfulTask');
+mongoose.connect('mongodb://localhost/RestfulTask', {useFindAndModify: false});
 
 var TaskSchema = new mongoose.Schema({
   title: {type: String},
