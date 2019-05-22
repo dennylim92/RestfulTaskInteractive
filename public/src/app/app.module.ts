@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AlltasksComponent } from './alltasks/alltasks.component';
+import { SingletaskComponent } from './singletask/singletask.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlltasksComponent,
+    SingletaskComponent
   ],
   imports: [
     HttpClientModule,

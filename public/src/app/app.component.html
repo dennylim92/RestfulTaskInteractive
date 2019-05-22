@@ -1,16 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<h1>
+<div class="root">
+  <h1>
     {{ mainTitle }}
   </h1>
-
   <button (click)="getTaskFromService()">{{ getAllTasks }}</button>
-  <ul *ngIf="gotTasks">
-    <li *ngFor="let task of tasks">{{ task.title }}
-      <button (click)="getSingleTask(task._id)">{{ showButton }}</button>
-    </li>
-  </ul>
-  <ul *ngIf="gotSingleTask">
-    <li>{{ singleTask.title }}</li>
-    <li>{{ singleTask.description }}</li>
-  </ul>
+
+
+  <app-alltasks *ngIf="showTasks" (gotSingleTask)="showSingleTask($event)" [getTaskFromService]="tasks"></app-alltasks>
+
+
+  <app-singletask *ngIf="showOneTask" [getSingleTask]="singleTask"></app-singletask>
+
+</div>
+

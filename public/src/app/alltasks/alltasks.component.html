@@ -1,0 +1,5 @@
+<div class="alltasks">
+  <li *ngFor="let task of getTaskFromService">{{ task.title }}
+      <button (click)="getSingleTask(task._id)">{{ showButton }}</button>
+  </li>
+</div>
